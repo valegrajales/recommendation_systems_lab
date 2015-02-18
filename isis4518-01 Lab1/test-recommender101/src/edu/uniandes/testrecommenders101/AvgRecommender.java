@@ -12,7 +12,7 @@ import edu.uniandes.testrecommenders101.util.ItemInfoLoader;
 import edu.uniandes.testrecommenders101.util.ItemInformation;
 
 
-public class FirstRecommender extends AbstractRecommender {
+public class AvgRecommender extends AbstractRecommender {
 
   @Override
   public float predictRating(int user, int item) {
@@ -22,15 +22,15 @@ public class FirstRecommender extends AbstractRecommender {
 
   @Override
   public List<Integer> recommendItems(int user) {
-	try {  
-      DataModel model= new DataModel();
-      DefaultDataLoader loader= new DefaultDataLoader();
-      loader.setFilename("data/ml-100k/u.data");
+    try {  
+	  DataModel model= new DataModel();
+	  DefaultDataLoader loader= new DefaultDataLoader();
+	  loader.setFilename("data/ml-100k/u.data");
 	  loader.loadData(model);
 	  
 	  ItemInfoLoader itemInfo = new ItemInfoLoader();
 	  String itemFileName = "data/ml-100k/u.item";
-	  ItemInformation[] array= itemInfo.getItemsSortedByPopularity(model,itemFileName);
+	  ItemInformation[] array= itemInfo.getItemsSortedByAverage(model,itemFileName);
 	  
 	  List<Integer> ids = new ArrayList<Integer>(); 
 	  for(int i = 0; ids.size() <= 30; i++){
@@ -43,7 +43,6 @@ public class FirstRecommender extends AbstractRecommender {
 	    }
 	  }
 	  return ids;
-	  
 	  
 	} catch (FileNotFoundException e) {
 	  // TODO Auto-generated catch block

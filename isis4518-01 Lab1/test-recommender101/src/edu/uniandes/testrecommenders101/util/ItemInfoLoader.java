@@ -159,4 +159,27 @@ public class ItemInfoLoader {
 		return array;
 	}
 
+	public static ItemInformation[]  getItemsSortedByAverage(DataModel model,String itemFileName)
+			throws FileNotFoundException {
+		
+		HashMap<Integer, ItemInformation> itemInfo=ItemInfoLoader.load(model,itemFileName);
+		ItemInformation[] array= null;
+		
+		array=new ItemInformation[itemInfo.keySet().size()];
+		int index=0;
+		for (Integer itemId : itemInfo.keySet()) {
+			array[index++]=itemInfo.get(itemId);
+		}
+		
+		Arrays.sort(array,new Comparator<ItemInformation>() {
+
+			@Override
+			public int compare(ItemInformation o1, ItemInformation o2) {
+				// * -1 for reverse order
+				return Double.compare(o1.getItemAverage(), o2.getItemAverage())*-1;
+			}
+		});
+		return array;
+	}
+
 }
