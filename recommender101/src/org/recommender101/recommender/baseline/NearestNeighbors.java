@@ -176,7 +176,7 @@ public class NearestNeighbors extends AbstractRecommender {
 	 */
 	@Override
 	public List<Integer> recommendItems(int user) {
-//		Debug.log("UserBasedKnn: Recommending items for : " + user);
+		Debug.log("UserBasedKnn: Recommending items for : " + user);
 		// Use the standard method based on the rating prediction
 		return recommendItemsByRatingPrediction(user);
 	}

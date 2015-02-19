@@ -180,6 +180,7 @@ public class RfRecRecommender extends AbstractRecommender {
 	@Override
 	public void init() throws Exception {
 		
+		System.out.println("------------------------------------------------------");
 		// Prepare the rating steps
 		int nbOfSteps = 1 + (dataModel.getMaxRatingValue() - dataModel.getMinRatingValue());
 		possibleRatings = new byte[nbOfSteps];

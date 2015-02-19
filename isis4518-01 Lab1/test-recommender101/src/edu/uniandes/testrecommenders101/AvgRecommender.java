@@ -7,6 +7,9 @@ import java.util.List;
 import org.recommender101.data.DataModel;
 import org.recommender101.data.DefaultDataLoader;
 import org.recommender101.recommender.AbstractRecommender;
+import org.recommender101.recommender.extensions.bprmf.BPRMFRecommender;
+import org.recommender101.recommender.extensions.contentbased.ContentBasedRecommender;
+import org.recommender101.recommender.extensions.rfrec.RfRecRecommender;
 
 import edu.uniandes.testrecommenders101.util.ItemInfoLoader;
 import edu.uniandes.testrecommenders101.util.ItemInformation;
@@ -16,8 +19,7 @@ public class AvgRecommender extends AbstractRecommender {
 
   @Override
   public float predictRating(int user, int item) {
-    // TODO Auto-generated method stub
-    return 0;
+	  return 0;
   }
 
   @Override
@@ -39,7 +41,7 @@ public class AvgRecommender extends AbstractRecommender {
 		if( model.getRating(user, iid) == -1)
 		{
 			ids.add( iid );
-		    System.out.println(array[i]);
+//		    System.out.println(array[i]);
 	    }
 	  }
 	  return ids;
